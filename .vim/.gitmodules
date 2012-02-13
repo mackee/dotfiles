@@ -1,0 +1,30 @@
+[submodule "bundle/vim-pathogen"]
+	path = bundle/vim-pathogen
+	url = git://github.com/sejaeger/vim-pathogen.git
+[submodule "bundle/vim-quickrun"]
+	path = bundle/vim-quickrun
+	url = git://github.com/thinca/vim-quickrun.git
+[submodule "bundle/vim-coffee-script"]
+	path = bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "bundle/vim-jade"]
+	path = bundle/vim-jade
+	url = https://github.com/digitaltoad/vim-jade.git
+[submodule "bundle/vim-stylus"]
+	path = bundle/vim-stylus
+	url = https://github.com/wavded/vim-stylus.git
+[submodule "bundle/vimshell"]
+	path = bundle/vimshell
+	url = https://github.com/Shougo/vimshell
+[submodule "bundle/vimproc"]
+	path = bundle/vimproc
+	url = https://github.com/Shougo/vimproc
+[submodule "errormarker.vim"]
+	path = errormarker.vim
+	url = https://github.com/vim-scripts/errormarker.vim.git
+[submodule "bundle/qfixhowm"]
+	path = bundle/qfixhowm
+	url = https://github.com/migrs/qfixhowm.git
+[submodule "bundle/vim-less-autocompile"]
+	path = bundle/vim-less-autocompile
+	url = https://github.com/plasticscafe/vim-less-autocompile.git
