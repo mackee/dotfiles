@@ -1,4 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =3
 let g:netrw_dirhist_1='/Users/mackee/develop/signal'
 let g:netrw_dirhist_2='/Users/mackee'
+let g:netrw_dirhist_3='/home/mackee/dotfiles/.vim/autoload'

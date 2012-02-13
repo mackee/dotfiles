@@ -87,13 +87,6 @@ let g:quickrun_config['nodejs'] = {'command': 'stylus'}
 
 autocmd BufNewFile,BufRead *.ctp set filetype=php
 
-"pathogen
-" .vim/bundle/plugin_nameを読み込むようにする
-call pathogen#runtime_append_all_bundles()
-
-" .vim/bunle/plugin_nameのヘルプを読み込めるようにする
-call pathogen#helptags()
-
 " カーソル行をハイライト
 set cursorline
 augroup cch
