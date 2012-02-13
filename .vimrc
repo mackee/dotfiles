@@ -107,3 +107,32 @@ let howm_dir             = '~/howm'
 let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.txt'
 let howm_fileencoding    = 'utf-8'
 let howm_fileformat      = 'unix'
+
+
+" vundle
+set nocompatible
+filetype off
+ 
+set rtp+=~/.vim/vundle/
+call vundle#rc()
+ 
+" github/vim-scripts
+Bundle "grep.vim"
+Bundle "The-NERD-tree"
+Bundle "QuickBuf"
+Bundle "taglist.vim"
+Bundle "errormarker.vim"
+ 
+" github
+Bundle "Shougo/neocomplcache"
+Bundle "tpope/vim-surround"
+Bundle "scrooloose/nerdcommenter"
+Bundle "kien/ctrlp.vim"
+Bundle "kchmck/vim-coffee-script"
+Bundle "statianzo/vim-jade"
+Bundle "plasticscafe/vim-less-autocompile"
+Bundle "thinca/vim-quickrun"
+Bundle "wavded/vim-stylus"
+
+ 
+filetype plugin indent on
