@@ -27,6 +27,8 @@ au BufRead,BufNewFile *.jade set filetype=jade
 au BufRead,BufNewFile *.styl set filetype=stylus
 " less
 au! BufRead,BufNewFile *.less set filetype=less
+" pytest
+au! BufRead,BufNewFile test_*.py set filetype=python.pytest
 
 " 読み込み時は自動コンパイル設定していないので下記変数を定義
 let g:less_autocompile=1
@@ -80,10 +82,15 @@ let g:quickrun_config['nodejs'] = {'command': 'node'}
 " stylus
 let g:quickrun_config['nodejs'] = {'command': 'stylus'}
 " python
-" let g:quickrun_config['python'] = {
-"      \ 'command': 'python',
-"      \ 'runmode': 'async:remote:vimproc'
-"      \ }
+ let g:quickrun_config['python'] = {
+      \ 'command': 'python',
+      \ 'runmode': 'async:remote:vimproc'
+      \ }
+" pytest
+let g:quickrun_config['python.pytest'] = {
+    \ 'command' : 'py.test',
+    \ 'args'    : '-v'
+    \}
 
 autocmd BufNewFile,BufRead *.ctp set filetype=php
 
@@ -133,6 +140,8 @@ Bundle "statianzo/vim-jade"
 Bundle "plasticscafe/vim-less-autocompile"
 Bundle "thinca/vim-quickrun"
 Bundle "wavded/vim-stylus"
+Bundle "Shougo/vimproc"
+Bundle "mattn/gist-vim"
 
  
 filetype plugin indent on

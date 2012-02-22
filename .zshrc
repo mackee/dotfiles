@@ -61,8 +61,10 @@ export PATH=/usr/local/share/npm/bin:$PATH
 
 source ~/.pythonbrew/etc/bashrc
 
-export VIRTUALENVWRAPPER_PYTHON=$HOME/.pythonbrew/pythons/Python-2.7.2/bin/python
-source $HOME/.pythonbrew/pythons/Python-2.7.2/bin/virtualenvwrapper.sh
+#export VIRTUALENVWRAPPER_PYTHON=$HOME/.pythonbrew/pythons/Python-2.7.2/bin/python
+#source $HOME/.pythonbrew/pythons/Python-2.7.2/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+source /usr/local/bin/virtualenvwrapper.sh
 export PIP_RESPECT_VIRTUALENV=true
 
 source ~/perl5/perlbrew/etc/bashrc
