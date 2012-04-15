@@ -3,8 +3,8 @@ filetype indent on
 filetype plugin on
 syntax on
 set expandtab
-set ts=2
-set shiftwidth=2
+set ts=4
+set shiftwidth=4
 set smartindent
 
 set fdc=0
@@ -27,8 +27,12 @@ au BufRead,BufNewFile *.jade set filetype=jade
 au BufRead,BufNewFile *.styl set filetype=stylus
 " less
 au! BufRead,BufNewFile *.less set filetype=less
+" sass
+au! BufRead,BufNewFile *.sass set filetype=sass
 " pytest
 au! BufRead,BufNewFile test_*.py set filetype=python.pytest
+" prove
+au! BufRead,BufNewFile *.t set filetype=perl.prove
 
 " 読み込み時は自動コンパイル設定していないので下記変数を定義
 let g:less_autocompile=1
@@ -80,7 +84,7 @@ let g:quickrun_config['jade'] = {'command': 'jade'}
 " nodejs
 let g:quickrun_config['nodejs'] = {'command': 'node'}
 " stylus
-let g:quickrun_config['nodejs'] = {'command': 'stylus'}
+let g:quickrun_config['stylus'] = {'command': 'stylus'}
 " python
  let g:quickrun_config['python'] = {
       \ 'command': 'python',
@@ -91,6 +95,12 @@ let g:quickrun_config['python.pytest'] = {
     \ 'command' : 'py.test',
     \ 'args'    : '-v'
     \}
+" prove
+let g:quickrun_config['perl.prove'] = {
+    \ 'command' : 'prove',
+    \ 'args'    : '-vlr'
+    \ }
+
 
 autocmd BufNewFile,BufRead *.ctp set filetype=php
 
@@ -115,6 +125,10 @@ let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.txt'
 let howm_fileencoding    = 'utf-8'
 let howm_fileformat      = 'unix'
 
+augroup xslate
+    set ts=2
+    set shiftwidth=2
+augroup END
 
 " vundle
 set nocompatible
@@ -129,7 +143,7 @@ Bundle "The-NERD-tree"
 Bundle "QuickBuf"
 Bundle "taglist.vim"
 Bundle "errormarker.vim"
- 
+
 " github
 Bundle "Shougo/neocomplcache"
 Bundle "tpope/vim-surround"
@@ -142,6 +156,7 @@ Bundle "thinca/vim-quickrun"
 Bundle "wavded/vim-stylus"
 Bundle "Shougo/vimproc"
 Bundle "mattn/gist-vim"
-
+Bundle "plasticboy/vim-markdown"
+Bundle "motemen/xslate-vim"
  
 filetype plugin indent on
