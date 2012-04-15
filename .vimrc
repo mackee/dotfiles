@@ -3,13 +3,11 @@ filetype indent on
 filetype plugin on
 syntax on
 set expandtab
-set ts=2
-set shiftwidth=2
+set ts=4
+set shiftwidth=4
 set smartindent
 
 set fdc=0
-
-colorscheme desert
 
 let php_folding=0
 au Syntax php set fdm=syntax
@@ -29,6 +27,10 @@ au BufRead,BufNewFile *.styl set filetype=stylus
 au! BufRead,BufNewFile *.less set filetype=less
 " pytest
 au! BufRead,BufNewFile test_*.py set filetype=python.pytest
+" perl
+au! BufRead,BufNewFile *.psgi set filetype=perl
+au! BufRead,BufNewFile *.t set filetype=perl
+
 
 " 読み込み時は自動コンパイル設定していないので下記変数を定義
 let g:less_autocompile=1
@@ -82,7 +84,7 @@ let g:quickrun_config['nodejs'] = {'command': 'node'}
 " stylus
 let g:quickrun_config['nodejs'] = {'command': 'stylus'}
 " python
- let g:quickrun_config['python'] = {
+let g:quickrun_config['python'] = {
       \ 'command': 'python',
       \ 'runmode': 'async:remote:vimproc'
       \ }
@@ -91,6 +93,8 @@ let g:quickrun_config['python.pytest'] = {
     \ 'command' : 'py.test',
     \ 'args'    : '-v'
     \}
+" perl
+let g:quickrun_config['perl'] = {'command': 'perl'}
 
 autocmd BufNewFile,BufRead *.ctp set filetype=php
 
@@ -115,7 +119,6 @@ let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.txt'
 let howm_fileencoding    = 'utf-8'
 let howm_fileformat      = 'unix'
 
-
 " vundle
 set nocompatible
 filetype off
@@ -129,6 +132,7 @@ Bundle "The-NERD-tree"
 Bundle "QuickBuf"
 Bundle "taglist.vim"
 Bundle "errormarker.vim"
+Bundle "wombat256.vim"
  
 " github
 Bundle "Shougo/neocomplcache"
@@ -137,11 +141,15 @@ Bundle "scrooloose/nerdcommenter"
 Bundle "kien/ctrlp.vim"
 Bundle "kchmck/vim-coffee-script"
 Bundle "statianzo/vim-jade"
-Bundle "plasticscafe/vim-less-autocompile"
 Bundle "thinca/vim-quickrun"
 Bundle "wavded/vim-stylus"
 Bundle "Shougo/vimproc"
 Bundle "mattn/gist-vim"
+Bundle "tpope/vim-markdown"
+Bundle "toritori0318/vim-redmine"
 
- 
+set t_Co=256
+colorschem wombat256mod
+set number
+
 filetype plugin indent on

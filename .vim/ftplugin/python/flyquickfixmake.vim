@@ -1,6 +1,6 @@
 """ $HOME/.vim/ftplugin/python/flyquickfixmake.vim
 """ setting for pyflakes
-setlocal makeprg=$HOME/.pythonbrew/pythons/Python-2.7.2/bin/pyflakes\ %
+setlocal makeprg=/usr/local/bin/pyflakes\ %
 setlocal errorformat=%f:%l:%m
 
 if !exists("g:python_flyquickfixmake")

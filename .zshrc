@@ -71,3 +71,8 @@ source ~/perl5/perlbrew/etc/bashrc
 
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd -"$newdir"'
 export SCREENDIR="/Users/mackee/.screen"
+source ~/.autojump/etc/profile.d/autojump.zsh
+
+export PATH=/usr/local/Cellar/ruby/1.9.3-p125/bin:$PATH
+
+alias tmux='tmux -2'
