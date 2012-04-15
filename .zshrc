@@ -45,7 +45,7 @@ setopt list_packed
 
 alias mlterm="mlterm -j genuine"
 
-export LSCOLORS=exfxcxdxbxegedabagacad
+export LSCOLORS=gxfxcxdxbxegedabagacad
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
 alias ls="ls -G"
@@ -70,5 +70,6 @@ export PIP_RESPECT_VIRTUALENV=true
 source ~/perl5/perlbrew/etc/bashrc
 
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd -"$newdir"'
-export SCREENDIR="/Users/mackee/.screen"
 export PATH=/usr/local/Cellar/ruby/1.9.3-p125/bin/:$PATH
+
+alias tmux='tmux -2'
