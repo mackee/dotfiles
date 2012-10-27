@@ -10,7 +10,12 @@ setopt autopushd
 autoload -U compinit
 compinit
 autoload predict-on
-predict-on
+#zle -N predict-on
+#zle -N predict-off
+bindkey '^xp' predict-on
+bindkey '^x^p' predict-off
+zstyle ':predict' toggle true
+zstyle ':predict' verbose true
 
 export LANG=ja_JP.UTF-8
 
@@ -52,24 +57,3 @@ alias ls="ls -G"
 alias gls="gls --color"
 
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-
-export PATH=/usr/local/bin:$PATH:/usr/local/gae:/usr/local/sbin
-export PYTHONPATH=$PATH:/usr/local/gae:/usr/local/gae/lib/antlr3:/usr/local/gae/lib/cacerts:/usr/local/gae/lib/django:/usr/local/gae/lib/ipaddr:/usr/local/gae/lib/webob:/usr/local/gae/lib/yaml/lib
-
-export NODE_PATH=/usr/local/lib/node_modules
-export PATH=/usr/local/share/npm/bin:$PATH
-
-source ~/.pythonbrew/etc/bashrc
-
-#export VIRTUALENVWRAPPER_PYTHON=$HOME/.pythonbrew/pythons/Python-2.7.2/bin/python
-#source $HOME/.pythonbrew/pythons/Python-2.7.2/bin/virtualenvwrapper.sh
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-source /usr/local/bin/virtualenvwrapper.sh
-export PIP_RESPECT_VIRTUALENV=true
-
-source ~/perl5/perlbrew/etc/bashrc
-
-alias gd='dirs -v; echo -n "select number: "; read newdir; cd -"$newdir"'
-export PATH=/usr/local/Cellar/ruby/1.9.3-p125/bin/:$PATH
-
-alias tmux='tmux -2'

@@ -129,45 +129,159 @@ let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.txt'
 let howm_fileencoding    = 'utf-8'
 let howm_fileformat      = 'unix'
 
-augroup xslate
-    set ts=2
-    set shiftwidth=2
-augroup END
-
 " vundle
 set nocompatible
 filetype off
  
-set rtp+=~/.vim/vundle/
-call vundle#rc()
+set rtp+=~/.vim/neoundle.vim/
+if has("vim_starting")
+    set runtimepath+=~/.vim/neobundle.vim
+    call neobundle#rc(expand('~/.vim/bundle'))
+endif
  
 " github/vim-scripts
-Bundle "grep.vim"
-Bundle "The-NERD-tree"
-Bundle "QuickBuf"
-Bundle "taglist.vim"
-Bundle "errormarker.vim"
-Bundle "wombat256.vim"
- 
+NeoBundle "grep.vim"
+NeoBundle "QuickBuf"
+NeoBundle "errormarker.vim"
+NeoBundle "wombat256.vim"
+NeoBundle "ref.vim"
+NeoBundle "unite.vim"
+NeoBundle "open-browser.vim"
+
 " github
-Bundle "Shougo/neocomplcache"
-Bundle "tpope/vim-surround"
-Bundle "scrooloose/nerdcommenter"
-Bundle "kien/ctrlp.vim"
-Bundle "kchmck/vim-coffee-script"
-Bundle "statianzo/vim-jade"
-Bundle "thinca/vim-quickrun"
-Bundle "wavded/vim-stylus"
-Bundle "Shougo/vimproc"
-Bundle "mattn/gist-vim"
-Bundle "plasticboy/vim-markdown"
-Bundle "motemen/xslate-vim"
+NeoBundle "Shougo/neocomplcache"
+NeoBundle "Shougo/neosnippet"
+NeoBundle "tpope/vim-surround"
+NeoBundle "kien/ctrlp.vim"
+NeoBundle "kchmck/vim-coffee-script"
+NeoBundle "statianzo/vim-jade"
+NeoBundle "thinca/vim-quickrun"
+NeoBundle "wavded/vim-stylus"
+NeoBundle "Shougo/vimproc"
+NeoBundle "Shougo/vimshell"
+NeoBundle "mattn/gist-vim"
+NeoBundle "plasticboy/vim-markdown"
+NeoBundle "motemen/xslate-vim"
  
-Bundle "tpope/vim-markdown"
-Bundle "toritori0318/vim-redmine"
+NeoBundle "toritori0318/vim-redmine"
+NeoBundle 't9md/vim-textmanip'
+NeoBundle "kana/vim-tabpagecd"
+NeoBundle "kana/vim-textobj-user"
+NeoBundle "kana/vim-textobj-indent"
+
+NeoBundle "mattn/webapi-vim"
+NeoBundle "basyura/unite-yarm"
+
+NeoBundle "Shougo/vimfiler"
+
+NeoBundle "tpope/vim-fugitive"
+NeoBundle "pix/vim-align"
+NeoBundle "mileszs/ack.vim"
+
+NeoBundle 'h1mesuke/unite-outline'
+
+NeoBundle 'soh335/vim-perl', 'feature/customize-braceclass-max-indent'
+
+NeoBundle 'scrooloose/syntastic'
+
+NeoBundle 'osyo-manga/vim-watchdogs'
+
+"textmanip
+xmap <Space>d <Plug>(textmanip-duplicate-down)
+nmap <Space>d <Plug>(textmanip-duplicate-down)
+xmap <Space>D <Plug>(textmanip-duplicate-up)
+nmap <Space>D <Plug>(textmanip-duplicate-up)
+
+xmap <C-j> <Plug>(textmanip-move-down)
+xmap <C-k> <Plug>(textmanip-move-up)
+xmap <C-h> <Plug>(textmanip-move-left)
+xmap <C-l> <Plug>(textmanip-move-right)
+
+map ,pt <Esc>:%! perltidy
+map ,u <Esc>:Unite outline
+
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+ " Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Select with <TAB>
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+let g:neocomplcache_ctags_arguments_list = {
+  \ 'perl' : '-R -h ".pm"'
+  \ }
+
+let g:neosnippets_dir = "~/.vim/snippets"
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default'    : '',
+    \ 'perl'       : $HOME . '/.vim/dict/perl.dict'
+    \ }
+
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" for snippets
+imap <S-TAB> <Plug>(neocomplcache_snippets_expand)
+smap <S-TAB> <Plug>(neocomplcache_snippets_expand)
+
+" unite-yarm
+let g:unite_yarm_server_url = 'https://project.kayac.com/redmine'
+let g:unite_yarm_access_key = '729f3e6d05b188108be6af7131eb3ec15b2d25ea'
+let g:unite_yarm_limit = 25
+let g:unite_yarm_backup_dir = '/tmp/yarm'
 
 set t_Co=256
 colorschem wombat256mod
 set number
 
 filetype plugin indent on
+set laststatus=2
+
+set tags=tags
+set autoread
+
+" perl indent level
+let g:perl_braceclass_max_indent_level = 1
+
+" clipboard
+set clipboard+=unnamed
+
+" vimshell
+let g:vimshell_editor_command = '/usr/local/bin/vim'
+
+if filereadable(expand('./.vimrc.local'))
+    source ./.vimrc.local
+endif
+
+"let watchdogs_check_BufWritePost_enable = 1                                                         
+"let g:quickrun_config = {
+"      \ "watchdogs_checker/_" : {
+"      \   "hook/close_quickfix/enable_exit" : 1,
+"      \   "runner/vimproc/updatetime" : 40                                                          
+"      \ },
+"      \ "watchdogs_checker/perl-projectlibs" : {                                                    
+"      \   "command" : "perl",
+"      \   "exec" : "%c %o -cw -MProject::Libs %s:p",
+"      \   "quickfix/errorformat": "%m\ at\ %f\ line\ %l%.%#",                                       
+"      \ },
+"      \ "perl/watchdogs_checker" : {
+"      \   "type": "watchdogs_checker/perl-projectlibs",                                             
+"      \ },
+"      \}
+"call watchdogs#setup(g:quickrun_config)
+
+let g:syntastic_perl_efm_program = "perl ~/.vim/perlcheck.pl"
