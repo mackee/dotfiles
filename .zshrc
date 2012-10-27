@@ -9,8 +9,8 @@ setopt autopushd
 
 autoload -U compinit
 compinit
-autoload predict-on
-predict-on
+#autoload predict-on
+#predict-on
 
 export LANG=ja_JP.UTF-8
 
@@ -59,12 +59,11 @@ export PYTHONPATH=$PATH:/usr/local/gae:/usr/local/gae/lib/antlr3:/usr/local/gae/
 export NODE_PATH=/usr/local/lib/node_modules
 export PATH=/usr/local/share/npm/bin:$PATH
 
-source ~/.pythonbrew/etc/bashrc
+[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 
 #export VIRTUALENVWRAPPER_PYTHON=$HOME/.pythonbrew/pythons/Python-2.7.2/bin/python
 #source $HOME/.pythonbrew/pythons/Python-2.7.2/bin/virtualenvwrapper.sh
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-source /usr/local/bin/virtualenvwrapper.sh
 export PIP_RESPECT_VIRTUALENV=true
 
 source ~/perl5/perlbrew/etc/bashrc
@@ -73,3 +72,9 @@ alias gd='dirs -v; echo -n "select number: "; read newdir; cd -"$newdir"'
 export PATH=/usr/local/Cellar/ruby/1.9.3-p125/bin/:$PATH
 
 alias tmux='tmux -2'
+
+export GIT_COMMIT_FLAG=0
+alias 'git svn dcommit'='~/dotfiles/must-git-st'
+source $HOME/dotfiles/zaw/zaw.zsh
+
+bindkey ^R zaw-history

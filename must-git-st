@@ -1,0 +1,7 @@
+#!/bin/sh
+if $GIT_COMMIT_FLAG then
+    git svn dcommit
+else
+    git status
+    export GIT_COMMIT_FLAG=1
+fi

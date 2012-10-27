@@ -7,6 +7,9 @@ set ts=4
 set shiftwidth=4
 set smartindent
 
+nmap j gj
+nmap k gk
+
 set fdc=0
 
 let php_folding=0
@@ -129,10 +132,10 @@ let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.txt'
 let howm_fileencoding    = 'utf-8'
 let howm_fileformat      = 'unix'
 
-augroup xslate
-    set ts=2
-    set shiftwidth=2
-augroup END
+"augroup xslate
+"    set ts=2
+"    set shiftwidth=2
+"augroup END
 
 " vundle
 set nocompatible
@@ -148,6 +151,8 @@ Bundle "QuickBuf"
 Bundle "taglist.vim"
 Bundle "errormarker.vim"
 Bundle "wombat256.vim"
+Bundle "unite.vim"
+Bundle "ref.vim"
  
 " github
 Bundle "Shougo/neocomplcache"
@@ -159,7 +164,9 @@ Bundle "statianzo/vim-jade"
 Bundle "thinca/vim-quickrun"
 Bundle "wavded/vim-stylus"
 Bundle "Shougo/vimproc"
+Bundle "Shougo/vimshell"
 Bundle "mattn/gist-vim"
+Bundle "mattn/webapi-vim"
 Bundle "plasticboy/vim-markdown"
 Bundle "motemen/xslate-vim"
  
@@ -170,4 +177,7 @@ set t_Co=256
 colorschem wombat256mod
 set number
 
+set tags=tags
+
 filetype plugin indent on
+set laststatus=2
