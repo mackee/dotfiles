@@ -11,7 +11,7 @@ snippet d
 snippet dd
 	use Data::Dumper;
 	local $Data::Dumper::Indent = 1;
-	local $Data::Dumper::Terse  = 1;
+	local $Data::Dumper::Terse	= 1;
 	warn Dumper 
 
 snippet dds
@@ -82,7 +82,7 @@ snippet m
 	# 
 	#================================================================
 	sub hoge {
-		my $self = shift;
+		my ($self) = @_;
 	}
 
 snippet lc
@@ -91,6 +91,35 @@ snippet lc
 	#================================================================
 
 snippet sc
-		#----------------------------------
-		# 
-		#----------------------------------
+	#----------------------------------------------------------------
+	# 
+	#----------------------------------------------------------------
+
+snippet getopt
+	use Getopt::Long qw/:config posix_default no_ignore_case gnu_compat auto_help/;
+
+snippet head
+	#!/usr/bin/env perl
+	use strict;
+	use warnings;
+	use utf8;
+	use 5.012;
+
+snippet SYNOPSIS
+	=head1 SYNOPSIS
+	=cut
+
+snippet dumper
+	use YAML; warn Dump (${1:code});
+
+snippet ql
+	use DBIx::QueryLog; my $guard = DBIx::QueryLog->guard();
+
+snippet has
+	has 'hoge' => (
+		is => 'ro',
+		isa => 'Int',
+		default => sub { retrun; },
+		lazy => 1,
+	);
+

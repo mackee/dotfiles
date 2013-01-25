@@ -23,9 +23,36 @@ local GREEN=$'%{\e[1;32m%}'
 local BLUE=$'%{\e[1;34m%}'
 local RED=$'%{\e[1;36m%}'
 local DEFAULT=$'%{\e[1;m%}'
+# plenv
 
-PROMPT=$RED'[${USER}@%M] %(!.#.$) '$DEFAULT
-RPROMPT=$GREEN'[%~]'$DEFAULT
+
+local PERL_VERSION=''
+plenv_perl_version() {
+    local dir=$PWD
+
+    [[ -n $PLENV_VERSION ]] && { echo $PLENV_VERSION; return }
+
+    while [[ -n $dir && $dir != "/" && $dir != "." ]]; do
+        if [[ -f "$dir/.perl-version" ]]; then
+            PERL_VERSION=`head -n 1 "$dir/.perl-version"`
+            return
+        fi
+        dir=$dir:h
+    done
+
+    local plenv_home=$PLENV_HOME
+    [[ -z $PLENV_HOME && -n $HOME ]] && plenv_home="$HOME/.plenv"
+
+    if [[ -f "$plenv_home/version" ]]; then
+        PERL_VERSION=`head -n 1 "$plenv_home/version"`
+        return
+    fi
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd plenv_perl_version
+PROMPT=$RED'[- o -] %(!.#.$) '$DEFAULT
+RPROMPT=$GREEN'[perl:${PERL_VERSION}][%~]'$DEFAULT
 setopt PROMPT_SUBST
 
 bindkey -v
