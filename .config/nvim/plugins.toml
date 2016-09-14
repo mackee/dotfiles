@@ -1,0 +1,64 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+build = 'make'
+on_i = 1
+on_ft = 'go'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = "has('nvim')"
+on_i = 1
+depends = 'context_filetype.vim'
+hook_source = '''
+  let g:deoplete#enable_at_startup = 1
+  source ~/.config/nvim/deoplete.vim
+'''
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 't9md/vim-textmanip'
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+[[plugins]]
+repo = 'kana/vim-textobj-indent'
+
+[[plugins]]
+repo = 'h1mesuke/vim-alignta'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+[[plugins]]
+repo = 'sorah/unite-ghq'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
