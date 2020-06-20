@@ -1,0 +1,1 @@
+/Users/taniwaki-makoto/src/github.com/kazuho/p5-text-microtemplate/contrib/vim/ftdetect/html.vim
