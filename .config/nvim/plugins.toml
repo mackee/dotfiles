@@ -92,6 +92,15 @@ repo = 'prabirshrestha/asyncomplete.vim'
 repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
+repo = 'prabirshrestha/asyncomplete-buffer.vim'
+
+[[plugins]]
+repo = 'yami-beta/asyncomplete-omni.vim'
+
+[[plugins]]
+repo = 'chumakd/perlomni.vim'
+
+[[plugins]]
 repo = 'natebosch/vim-lsc'
 
 [[plugins]]
