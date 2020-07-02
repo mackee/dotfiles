@@ -36,6 +36,7 @@ set clipboard+=unnamedplus
 source ~/.config/nvim/lsp.vim
 source ~/.config/nvim/lightline.vim
 source ~/.config/nvim/unite.vim
+source ~/.config/nvim/asyncomplete.vim
 
 set list
 set listchars=tab:>-,trail:.,eol:↲,extends:>,precedes:<,nbsp:%

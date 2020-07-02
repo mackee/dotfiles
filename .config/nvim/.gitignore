@@ -3,3 +3,4 @@ repos_orig
 rollbacks
 temp
 .dein
+.cache
