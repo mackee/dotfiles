@@ -33,6 +33,7 @@ set background=dark
 colorscheme solarized
 
 set clipboard+=unnamedplus
+source ~/.config/nvim/lsp.vim
 source ~/.config/nvim/lightline.vim
 source ~/.config/nvim/unite.vim
 
