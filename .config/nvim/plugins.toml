@@ -15,7 +15,10 @@ on_ft = 'vim'
 repo = 'ctrlpvim/ctrlp.vim'
 
 [[plugins]]
-repo = 'itchyny/lightline.vim'
+repo = 'nvim-tree/nvim-web-devicons'
+
+[[plugins]]
+repo = 'nvim-lualine/lualine.nvim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -26,16 +29,6 @@ repo = 't9md/vim-textmanip'
 repo = 'kana/vim-textobj-user'
 [[plugins]]
 repo = 'kana/vim-textobj-indent'
-
-[[plugins]]
-repo = 'h1mesuke/vim-alignta'
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
-[[plugins]]
-repo = 'Shougo/vimfiler.vim'
-[[plugins]]
-repo = 'sorah/unite-ghq'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -75,27 +68,27 @@ repo = 'mileszs/ack.vim'
 [[plugins]]
 repo = 'HerringtonDarkholme/yats.vim'
 
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-depends = 'async.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/async.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete-lsp.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete-buffer.vim'
-
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
-
-[[plugins]]
-repo = 'yami-beta/asyncomplete-omni.vim'
+##[[plugins]]
+##repo = 'prabirshrestha/vim-lsp'
+##depends = 'async.vim'
+##
+##[[plugins]]
+##repo = 'prabirshrestha/async.vim'
+##
+##[[plugins]]
+##repo = 'prabirshrestha/asyncomplete.vim'
+##
+##[[plugins]]
+##repo = 'prabirshrestha/asyncomplete-lsp.vim'
+##
+##[[plugins]]
+##repo = 'prabirshrestha/asyncomplete-buffer.vim'
+##
+##[[plugins]]
+##repo = 'mattn/vim-lsp-settings'
+##
+##[[plugins]]
+##repo = 'yami-beta/asyncomplete-omni.vim'
 
 [[plugins]]
 repo = 'chumakd/perlomni.vim'
@@ -108,3 +101,118 @@ repo = 'uarun/vim-protobuf'
 
 [[plugins]]
 repo = 'Shougo/vinarise.vim'
+
+[[plugins]]
+repo = 'mattn/vim-goaddtags'
+
+[[plugins]]
+repo = 'mattn/vim-goimpl'
+
+[[plugins]]
+repo = 'motemen/xslate-vim'
+
+[[plugins]]
+repo = 'jparise/vim-graphql'
+
+[[plugins]]
+repo = 'sebdah/vim-delve'
+
+[[plugins]]
+repo = 'benmills/vimux'
+
+[[plugins]]
+repo = 'cespare/vim-go-templates'
+
+[[plugins]]
+repo = 'yko/mojo.vim'
+
+[[plugins]]
+repo = 'haya14busa/vim-auto-programming'
+
+[[plugins]]
+repo = 'google/vim-jsonnet'
+
+[[plugins]]
+repo = 'itkq/fluentd-vim'
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_post_update = ':TSUpdate'
+
+[[plugins]]
+repo = 'sgur/vim-editorconfig'
+
+[[plugins]]
+repo = 'nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'RutaTang/quicknote.nvim'
+
+[[plugins]]
+repo = 'github/copilot.vim'
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+
+[[plugins]]
+repo = 'yuzoiwasaki/fluentd.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-nvim-lsp'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-around'
+
+[[plugins]]
+repo = 'uga-rosa/ddc-nvim-lsp-setup'
+
+[[plugins]]
+repo = 'matsui54/denops-popup-preview.vim'
+
+[[plugins]]
+repo = 'matsui54/denops-signature_help'
+
+[[plugins]]
+repo = 'Shougo/ddx.vim'
+
+[[plugins]]
+repo ='Shougo/ddu.vim'
+
+[[plugins]]
+repo ='Shougo/ddu-ui-ff'
+
+[[plugins]]
+repo ='Shougo/ddu-source-file_rec'
+
+[[plugins]]
+repo ='shun/ddu-source-rg'
+
+[[plugins]]
+repo ='Shougo/ddu-filter-matcher_substring'
+
+[[plugins]]
+repo ='Shougo/ddu-kind-file'
+
+[[plugins]]
+repo = 'j-hui/fidget.nvim'
+
+[[plugins]]
+repo = 'monaqa/dial.nvim'
+
+[[plugins]]
+repo = 'uga-rosa/utf8.nvim'
+
+[[plugins]]
+repo = 'shellRaining/hlchunk.nvim'

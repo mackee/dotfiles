@@ -1,3 +1,11 @@
+export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/.plenv/shims:$HOME/.plenv/bin:$PATH
+if which plenv > /dev/null; then eval "$(plenv init -)"; fi
+export PATH=$HOME/.rbenv/bin:$PATH
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH=$HOME/.pyenv/bin:$PATH
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -49,10 +57,25 @@ plenv_perl_version() {
     fi
 }
 
+# branch name
+
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+
+# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
+RPROMPT="%1(v|%F{green}%1v%f|)"
+
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd plenv_perl_version
 PROMPT=$RED'[- o -] %(!.#.$) '$DEFAULT
-RPROMPT=$GREEN'[perl:${PERL_VERSION}][%~]'$DEFAULT
+RPROMPT=$GREEN'%1(v|%1v|)[perl:${PERL_VERSION}][%~]'$DEFAULT
 setopt PROMPT_SUBST
 
 bindkey -v
@@ -84,3 +107,37 @@ alias ls="ls -G"
 alias gls="gls --color"
 
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+
+alias mvim="/Applications/MacVim.app/Contents/MacOS/mvim --remote-tab"
+alias reply="PERL_RL=Caroline reply"
+
+export PYTHONPATH=/usr/local/Cellar/opencv/2.4.6.1/lib/python2.7/site-packages:$PYTHONPATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+eval "$(direnv hook zsh)"
+
+alias gbp="git branch -l | peco | xargs git checkout"
+alias gpc="git pull origin \$(git rev-parse --abbrev-ref HEAD)"
+
+#PATH="/Users/taniwaki-makoto/perl5/bin${PATH:+:${PATH}}"; export PATH;
+#PERL5LIB="/Users/taniwaki-makoto/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="/Users/taniwaki-makoto/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"/Users/taniwaki-makoto/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=/Users/taniwaki-makoto/perl5"; export PERL_MM_OPT;
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+export PATH="$(readlink $(where perl6) | uniq | perl -pne 's[\.\.][/usr/local]; s[(.*)/bin/perl6][$1/share/perl6/site/bin]'):$PATH"
+
+ghq() {
+  if [[ $1 == "look" ]]; then
+    local repo_path
+    repo_path=$(command ghq list --full-path --exact $2)
+    cd ${repo_path}
+  else
+    command ghq "$@"
+  fi
+}
+#source /Users/taniwaki-makoto/.config/op/plugins.sh

@@ -33,18 +33,37 @@ set background=dark
 colorscheme solarized
 
 set clipboard+=unnamedplus
-source ~/.config/nvim/lsp.vim
-source ~/.config/nvim/lightline.vim
-source ~/.config/nvim/unite.vim
-source ~/.config/nvim/asyncomplete.vim
+source ~/.config/nvim/lsp.lua
+source ~/.config/nvim/ddu.lua
+source ~/.config/nvim/lualine.lua
+source ~/.config/nvim/dial.lua
+source ~/.config/nvim/hlchunk.lua
+source ~/.config/nvim/rename.vim
 
 set list
 set listchars=tab:>-,trail:.,eol:↲,extends:>,precedes:<,nbsp:%
 set number
 
-let g:ale_linters = { 'perl': [], 'ruby': ['ruby'] }
-let g:ale_fixers = { 'perl': ['perltidy'] }
-let g:ale_fix_on_save = 1
+let g:ale_linters = {
+  \ 'perl': [],
+  \ 'ruby': ['ruby'],
+  \ 'terraform': ['tflint'],
+  \ 'proto': ['buf_lint'],
+  \ 'typescript': ['eslint'],
+  \ 'vue': ['eslint'],
+  \ 'markdown': ['textlint'],
+  \ 'go': [],
+  \ }
+let g:ale_fixers = {
+  \ 'perl': [],
+  \ 'go': [],
+  \ 'terraform': ['terraform'],
+  \ 'proto': ['buf-format'],
+  \ 'vue': ['eslint'],
+  \ 'typescript': ['eslint'],
+  \}
+let g:ale_fix_on_save = 0
+let g:terraform_fmt_on_save = 0
 
 let g:slumlord_separate_win = 1
 
@@ -52,3 +71,6 @@ if executable('ag')
   let g:ackprg = "ag --vimgrep"
 endif
 set ambiwidth=single
+
+inoremap <silent> jj <ESC>
+
