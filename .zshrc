@@ -26,6 +26,8 @@ local DEFAULT=$'%{\e[1;m%}'
 # plenv
 
 
+#export PATH="$HOME/.plenv/bin:$PATH"
+eval "$(plenv init -)"
 local PERL_VERSION=''
 plenv_perl_version() {
     local dir=$PWD
@@ -55,8 +57,6 @@ PROMPT=$RED'[- o -] %(!.#.$) '$DEFAULT
 RPROMPT=$GREEN'[perl:${PERL_VERSION}][%~]'$DEFAULT
 setopt PROMPT_SUBST
 
-bindkey -v
-
 # historical backward/forward search with linehead string binded to ^P/^N
 #
 autoload history-search-end
@@ -84,3 +84,21 @@ alias ls="ls -G"
 alias gls="gls --color"
 
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
+
+eval "$(direnv hook zsh)"
+
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib:/opt/homebrew/lib
+
+ghq() {
+  if [[ $1 == "look" ]]; then
+    local repo_path
+    repo_path=$(command ghq list --full-path --exact $2)
+    cd ${repo_path}
+  else
+    command ghq "$@"
+  fi
+}
+
+
+eval "$(rbenv init -)"

@@ -1,0 +1,23 @@
+{
+  "copilot.lua": { "branch": "master", "commit": "f7612f5af4a7d7615babf43ab1e67a2d790c13a6" },
+  "ddc-filter-converter_remove_overlap": { "branch": "main", "commit": "e94330b06c47f63a46ce705927bb4deaff611c21" },
+  "ddc-filter-matcher_head": { "branch": "main", "commit": "17b656e38221743290bd0cd26f5b177efe318d77" },
+  "ddc-filter-sorter_rank": { "branch": "main", "commit": "8b51a0690d030bc22777549c3944012d42fa02a3" },
+  "ddc-nvim-lsp-setup": { "branch": "main", "commit": "a8a06af203d402e0874060bcd8a0b89b32a52224" },
+  "ddc-source-nvim-lsp": { "branch": "main", "commit": "1c8d1b40a735e11fa221ee1585796f0816a849e8" },
+  "ddc-ui-native": { "branch": "main", "commit": "08ae714027d37a473473a66869235c11838d2b56" },
+  "ddc.vim": { "branch": "main", "commit": "a6e279235bad130ba46c29099a0c02e10b9ebef3" },
+  "denops-popup-preview.vim": { "branch": "main", "commit": "5a62ac76478791a86f17ac79f064ab302c41f5eb" },
+  "denops-signature_help": { "branch": "main", "commit": "f5a80ec66faa016952df0f267f9f4c43d8dbe1b6" },
+  "denops.vim": { "branch": "main", "commit": "2a393849db9531d14106dcd437f9b7deb5012057" },
+  "dial.nvim": { "branch": "master", "commit": "27eb570085db2ef44bff4f620d3806039184651c" },
+  "fidget.nvim": { "branch": "main", "commit": "1ba38e4cbb24683973e00c2e36f53ae64da38ef5" },
+  "hlchunk.nvim": { "branch": "main", "commit": "882d1bc86d459fa8884398223c841fd09ea61b6b" },
+  "lazy.nvim": { "branch": "main", "commit": "d3974346b6cef2116c8e7b08423256a834cb7cbc" },
+  "lualine.nvim": { "branch": "master", "commit": "0a5a66803c7407767b799067986b4dc3036e1983" },
+  "nvim-lspconfig": { "branch": "master", "commit": "a3d9395455f2b2e3b50a0b0f37b8b4c23683f44a" },
+  "nvim-web-devicons": { "branch": "master", "commit": "5b9067899ee6a2538891573500e8fd6ff008440f" },
+  "vim-colors-solarized": { "branch": "master", "commit": "528a59f26d12278698bb946f8fb82a63711eec21" },
+  "vim-fugitive": { "branch": "master", "commit": "ce882460cf3db12e99f8bf579cbf99e331f6dd4f" },
+  "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" }
+}

@@ -1,6 +1,2 @@
-repos
-repos_orig
-rollbacks
-temp
-.dein
+lazy/
 .cache

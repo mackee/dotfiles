@@ -76,28 +76,6 @@ repo = 'mileszs/ack.vim'
 repo = 'HerringtonDarkholme/yats.vim'
 
 [[plugins]]
-repo = 'prabirshrestha/vim-lsp'
-depends = 'async.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/async.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete-lsp.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/asyncomplete-buffer.vim'
-
-[[plugins]]
-repo = 'mattn/vim-lsp-settings'
-
-[[plugins]]
-repo = 'yami-beta/asyncomplete-omni.vim'
-
-[[plugins]]
 repo = 'chumakd/perlomni.vim'
 
 [[plugins]]
@@ -108,3 +86,79 @@ repo = 'uarun/vim-protobuf'
 
 [[plugins]]
 repo = 'Shougo/vinarise.vim'
+
+[[plugins]]
+repo = 'mattn/vim-goaddtags'
+
+[[plugins]]
+repo = 'mattn/vim-goimpl'
+
+[[plugins]]
+repo = 'jonsmithers/vim-html-template-literals'
+
+[[plugins]]
+repo = 'ziglang/zig.vim'
+
+[[plugins]]
+repo = 'jxnblk/vim-mdx-js'
+
+[[plugins]]
+repo = 'sago35/tinygo.vim'
+
+[[plugins]]
+repo = 'github/copilot.vim'
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+
+[[plugins]]
+repo = 'othree/html5.vim'
+
+[[plugins]]
+repo = 'evanleck/vim-svelte'
+
+#[[plugins]]
+#repo = 'prabirshrestha/vim-lsp'
+#depends = 'async.vim'
+#
+#[[plugins]]
+#repo = 'prabirshrestha/async.vim'
+#
+#[[plugins]]
+#repo = 'prabirshrestha/asyncomplete.vim'
+#
+#[[plugins]]
+#repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc-ui-native'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-nvim-lsp'
+
+[[plugins]]
+repo = 'uga-rosa/ddc-nvim-lsp-setup'
+
+[[plugins]]
+repo = 'neovim/nvim-lspconfig'
+
+[[plugins]]
+repo = 'Shougo/ddc-filter-matcher_head'
+
+[[plugins]]
+repo = 'Shougo/ddc-filter-sorter_rank'
+
+[[plugins]]
+repo = 'Shougo/ddc-filter-converter_remove_overlap'
+
+[[plugins]]
+repo = 'matsui54/denops-signature_help'
+
+[[plugins]]
+repo = 'matsui54/denops-popup-preview.vim'

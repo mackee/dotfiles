@@ -3,7 +3,6 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 if &compatible
   set nocompatible               " Be iMproved
 endif
-let g:deoplete#enable_profile = 1
 " Required:
 set runtimepath^=$HOME/src/github.com/Shougo/dein.vim
 
@@ -33,7 +32,8 @@ set background=dark
 colorscheme solarized
 
 set clipboard+=unnamedplus
-source ~/.config/nvim/lsp.vim
+"source ~/.config/nvim/lsp.vim
+source ~/.config/nvim/lsp_nvim.lua
 source ~/.config/nvim/lightline.vim
 source ~/.config/nvim/unite.vim
 source ~/.config/nvim/asyncomplete.vim
@@ -42,8 +42,8 @@ set list
 set listchars=tab:>-,trail:.,eol:↲,extends:>,precedes:<,nbsp:%
 set number
 
-let g:ale_linters = { 'perl': [], 'ruby': ['ruby'] }
-let g:ale_fixers = { 'perl': ['perltidy'] }
+let g:ale_linters = { 'perl': [], 'ruby': ['ruby'], 'rust': [], 'go': [], 'html': [] }
+let g:ale_fixers = { 'perl': ['perltidy'], 'rust': ['rustfmt'] }
 let g:ale_fix_on_save = 1
 
 let g:slumlord_separate_win = 1
@@ -52,3 +52,8 @@ if executable('ag')
   let g:ackprg = "ag --vimgrep"
 endif
 set ambiwidth=single
+
+imap jj <Esc>
+
+"let g:lsp_log_verbose = 1
+"let g:lsp_log_file = expand('~/vim-lsp.log')
