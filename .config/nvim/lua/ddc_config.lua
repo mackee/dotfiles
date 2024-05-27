@@ -11,9 +11,12 @@ return {
 		'Shougo/ddc-filter-converter_remove_overlap',
 		'matsui54/denops-signature_help',
 		'matsui54/denops-popup-preview.vim',
+		'github/copilot.vim',
+		-- 'Shougo/ddc-source-copilot',
 	},
 	config = function()
     vim.fn['ddc#custom#patch_global']('ui', 'native')
+    -- vim.fn['ddc#custom#patch_global']('sources', {'lsp', 'copilot'})
     vim.fn['ddc#custom#patch_global']('sources', {'lsp'})
     vim.fn['ddc#custom#patch_global']('sourceOptions', {
       _ = {
@@ -21,12 +24,18 @@ return {
         sorters = {'sorter_rank'},
         converters = {'converter_remove_overlap'},
       },
-      ['nvim-lsp'] = {
+      ['lsp'] = {
         mark = 'LSP', 
         matchers = {'matcher_head'},
         forceCompletionPattern = '\\.|:|->|"\\w+/*'
       },
+			-- ['copilot'] = {
+			-- 	mark = 'copilot',
+			-- 	matchers = {},
+			-- 	minAutoCompleteLength = 0,
+			-- },
     })
+		vim.g.copilot_no_maps = true
     
     require("ddc_source_lsp_setup").setup()
     lspconfig = require("lspconfig")
@@ -45,7 +54,6 @@ return {
           },
         },
       },
-    
     })
     lspconfig.tsserver.setup({
       root_dir = lspconfig.util.root_pattern("package.json"),

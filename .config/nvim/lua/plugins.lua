@@ -16,24 +16,50 @@ local plugins = {
   },
   require("lualine_config"),
   require("ddc_config"),
-	{
-		"zbirenbaum/copilot.lua",
-		event = { "InsertEnter" },
-		opts = {
-			suggestion = {
-				enabled = true,
-				auto_trigger = true,
-				debounce = 75,
-				keymap = {
-          accept = "<C-a>",
-          dismiss = "<C-]>",
-				}
-			},
-		},
-	},
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	event = { "InsertEnter" },
+	-- 	opts = {
+	-- 		suggestion = {
+	-- 			enabled = true,
+	-- 			auto_trigger = true,
+	-- 			debounce = 75,
+	-- 			keymap = {
+  --         accept = "<C-a>",
+  --         dismiss = "<C-]>",
+	-- 			}
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"j-hui/fidget.nvim",
 		config = true,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textsubjects",
+		},
+		build = function()
+			vim.cmd("TSUpdate")
+			require('nvim-treesitter.configs').setup {
+				textsubjects = {
+					enable = true,
+					prev_selection = ',',
+					keymaps = {
+							['.'] = 'textsubjects-smart',
+							[';'] = 'textsubjects-container-outer',
+							['i;'] = { 'textsubjects-container-inner', desc = "Select inside containers (classes, functions, etc.)" },
+					},
+				},
+			}
+		end,
+		config = true,
+	},
+  {
+		"chrisgrieser/nvim-various-textobjs",
+    lazy = false,
+    opts = { useDefaultKeymaps = true },
 	},
 	{
 		"shellRaining/hlchunk.nvim",
@@ -73,6 +99,8 @@ local plugins = {
 		"tpope/vim-fugitive",
 		dependencies = { "tpope/vim-rhubarb" },
 	},
+	require("ddu_config"),
+	require("textmanip_config"),
 }
 local opts = {
   root = "~/.config/nvim/lazy",
