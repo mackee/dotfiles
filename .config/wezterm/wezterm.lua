@@ -95,50 +95,62 @@ return {
     {
       key = 'h',
       mods = 'LEADER|CTRL',
-      action = act.ActivateKeyTable {
-				name = "resize_pane",
-				one_shot = false,
-				until_unkown = true,
-				replace_current = true,
-				prevent_fallback = false,
-				timeout_milliseconds = 1000,
-			},
+      action = act.Multiple {
+        act.AdjustPaneSize { "Left", 5 },
+        act.ActivateKeyTable {
+          name = "resize_pane",
+          one_shot = false,
+          until_unkown = true,
+          replace_current = true,
+          prevent_fallback = false,
+          timeout_milliseconds = 1000,
+        },
+      },
     },
     {
       key = 'j',
       mods = 'LEADER|CTRL',
-      action = act.ActivateKeyTable {
-				name = "resize_pane",
-				one_shot = false,
-				until_unkown = true,
-				replace_current = true,
-				prevent_fallback = false,
-				timeout_milliseconds = 1000,
-			},
+      action = act.Multiple {
+        act.AdjustPaneSize { "Down", 5 },
+        act.ActivateKeyTable {
+          name = "resize_pane",
+          one_shot = false,
+          until_unkown = true,
+          replace_current = true,
+          prevent_fallback = false,
+          timeout_milliseconds = 1000,
+        },
+      },
     },
     {
       key = 'k',
       mods = 'LEADER|CTRL',
-      action = act.ActivateKeyTable {
-				name = "resize_pane",
-				one_shot = false,
-				until_unkown = true,
-				replace_current = true,
-				prevent_fallback = false,
-				timeout_milliseconds = 1000,
-			},
+      action = act.Multiple {
+        act.AdjustPaneSize { "Up", 5 },
+        act.ActivateKeyTable {
+          name = "resize_pane",
+          one_shot = false,
+          until_unkown = true,
+          replace_current = true,
+          prevent_fallback = false,
+          timeout_milliseconds = 1000,
+        },
+      },
     },
     {
       key = 'l',
       mods = 'LEADER|CTRL',
-      action = act.ActivateKeyTable {
-				name = "resize_pane",
-				one_shot = false,
-				until_unkown = true,
-				replace_current = true,
-				prevent_fallback = false,
-				timeout_milliseconds = 1000,
-			},
+      action = act.Multiple {
+        act.AdjustPaneSize { "Right", 5 },
+        act.ActivateKeyTable {
+          name = "resize_pane",
+          one_shot = false,
+          until_unkown = true,
+          replace_current = true,
+          prevent_fallback = false,
+          timeout_milliseconds = 1000,
+        },
+      },
     },
     {
       key = '[',
@@ -151,28 +163,28 @@ return {
       action = act.RotatePanes 'CounterClockwise',
     },
   },
-	key_tables = {
-		resize_pane = {
-			{
-				key = 'h',
-				mods = 'CTRL',
-				action = act.AdjustPaneSize { "Left", 5 },
-			},
-			{
-				key = 'j',
-				mods = 'CTRL',
-				action = act.AdjustPaneSize { "Down", 5 },
-			},
-			{
-				key = 'k',
-				mods = 'CTRL',
-				action = act.AdjustPaneSize { "Up", 5 },
-			},
-			{
-				key = 'l',
-				mods = 'CTRL',
-				action = act.AdjustPaneSize { "Right", 5 },
-			},
-		},
-	},
+  key_tables = {
+    resize_pane = {
+      {
+        key = 'h',
+        mods = 'CTRL',
+        action = act.AdjustPaneSize { "Left", 5 },
+      },
+      {
+        key = 'j',
+        mods = 'CTRL',
+        action = act.AdjustPaneSize { "Down", 5 },
+      },
+      {
+        key = 'k',
+        mods = 'CTRL',
+        action = act.AdjustPaneSize { "Up", 5 },
+      },
+      {
+        key = 'l',
+        mods = 'CTRL',
+        action = act.AdjustPaneSize { "Right", 5 },
+      },
+    },
+  },
 }
