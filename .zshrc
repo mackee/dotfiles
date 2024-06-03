@@ -88,7 +88,7 @@ export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
 
 eval "$(direnv hook zsh)"
 
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib:/opt/homebrew/lib
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib
 
 ghq() {
   if [[ $1 == "look" ]]; then
