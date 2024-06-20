@@ -1,20 +1,20 @@
 return {
   "Shougo/ddc.vim",
-	dependencies = {
-		'vim-denops/denops.vim',
-		'Shougo/ddc-ui-native',
-		'Shougo/ddc-source-nvim-lsp',
-		'uga-rosa/ddc-nvim-lsp-setup',
-		'neovim/nvim-lspconfig',
-		'Shougo/ddc-filter-matcher_head',
-		'Shougo/ddc-filter-sorter_rank',
-		'Shougo/ddc-filter-converter_remove_overlap',
-		'matsui54/denops-signature_help',
-		'matsui54/denops-popup-preview.vim',
-		'github/copilot.vim',
-		-- 'Shougo/ddc-source-copilot',
-	},
-	config = function()
+  dependencies = {
+    'vim-denops/denops.vim',
+    'Shougo/ddc-ui-native',
+    'Shougo/ddc-source-nvim-lsp',
+    'uga-rosa/ddc-nvim-lsp-setup',
+    'neovim/nvim-lspconfig',
+    'Shougo/ddc-filter-matcher_head',
+    'Shougo/ddc-filter-sorter_rank',
+    'Shougo/ddc-filter-converter_remove_overlap',
+    'matsui54/denops-signature_help',
+    'matsui54/denops-popup-preview.vim',
+    'github/copilot.vim',
+    -- 'Shougo/ddc-source-copilot',
+  },
+  config = function()
     vim.fn['ddc#custom#patch_global']('ui', 'native')
     -- vim.fn['ddc#custom#patch_global']('sources', {'lsp', 'copilot'})
     vim.fn['ddc#custom#patch_global']('sources', {'lsp'})
@@ -27,15 +27,16 @@ return {
       ['lsp'] = {
         mark = 'LSP', 
         matchers = {'matcher_head'},
-        forceCompletionPattern = '\\.|:|->|"\\w+/*'
+        forceCompletionPattern = '\\.|:|->|"\\w+/*',
+				timeout = 500,
       },
-			-- ['copilot'] = {
-			-- 	mark = 'copilot',
-			-- 	matchers = {},
-			-- 	minAutoCompleteLength = 0,
-			-- },
+      -- ['copilot'] = {
+      --  mark = 'copilot',
+      --  matchers = {},
+      --  minAutoCompleteLength = 0,
+      -- },
     })
-		vim.g.copilot_no_maps = true
+    vim.g.copilot_no_maps = true
     
     require("ddc_source_lsp_setup").setup()
     lspconfig = require("lspconfig")
@@ -74,14 +75,22 @@ return {
     require("lspconfig").zls.setup({})
     
     require("lspconfig").perlnavigator.setup({
-      cmd = {'/Users/mackee/bin/perlnavigator', '--stdio'},
+      cmd = {vim.fn.expand('$HOME/bin/perlnavigator'), '--stdio'},
       settings = {
         perlnavigator = {
-          perlPath = "/Users/mackee/.plenv/shims/perl",
+          perlPath = vim.fn.expand("$HOME/.plenv/shims/perl"),
         },
       },
     })
-    
+
+    require'lspconfig'.volar.setup{
+      filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+      init_options = {
+        typescript = {
+          tsdk = vim.fn.expand('$HOME/.nodebrew/current/lib/node_modules/typescript/lib')
+        }
+      }
+    }
     vim.fn['ddc#enable']()
     vim.fn['popup_preview#enable']()
     vim.fn['signature_help#enable']()
@@ -124,5 +133,5 @@ return {
         end, opts)
       end,
     })
-	end,
+  end,
 }

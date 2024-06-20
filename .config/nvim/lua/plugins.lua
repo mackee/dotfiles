@@ -13,18 +13,29 @@ vim.opt.rtp:prepend(lazypath)
 
 local lazy = require("lazy")
 local plugins = {
-  {
-    "altercation/vim-colors-solarized",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd("filetype indent plugin on")
-      vim.cmd("let g:solarized_termcolors=256")
-      vim.cmd("syntax enable")
-      vim.cmd("set background=dark")
-      vim.cmd("colorscheme solarized")
-    end,
-  },
+  -- {
+  --   "altercation/vim-colors-solarized",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd("filetype indent plugin on")
+  --     vim.cmd("let g:solarized_termcolors=256")
+  --     vim.cmd("syntax enable")
+  --     vim.cmd("set background=dark")
+  --     vim.cmd("colorscheme solarized")
+  --   end,
+  -- },
+	{
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+		 vim.opt.termguicolors = true
+
+			vim.cmd("syntax enable")
+			vim.cmd("colorscheme duskfox")
+		end,
+	},
   require("lualine_config"),
   require("ddc_config"),
 	-- {
@@ -53,7 +64,16 @@ local plugins = {
 		},
 		build = function()
 			vim.cmd("TSUpdate")
+		end,
+		config = function()
 			require('nvim-treesitter.configs').setup {
+				highlight = {
+					enable = true,
+					use_languagetree = true,
+				},
+				indent = {
+					enable = true,
+				},
 				textsubjects = {
 					enable = true,
 					prev_selection = ',',
@@ -65,7 +85,6 @@ local plugins = {
 				},
 			}
 		end,
-		config = true,
 	},
   {
 		"chrisgrieser/nvim-various-textobjs",
@@ -116,6 +135,7 @@ local plugins = {
 	},
 	require("ddu_config"),
 	require("textmanip_config"),
+	{ "mattn/vim-goaddtags" },
 }
 local opts = {
   root = "~/.config/nvim/lazy",

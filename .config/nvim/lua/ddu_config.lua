@@ -6,6 +6,7 @@ return {
 		"shun/ddu-source-rg",
 		"Shougo/ddu-filter-matcher_substring",
 		"Shougo/ddu-kind-file",
+		"yuki-yano/ddu-filter-fzf",
 	},
 	config = function ()
 		vim.fn["ddu#custom#patch_global"]({
@@ -14,13 +15,14 @@ return {
 				{
 					name = 'file_rec',
 					params = {
-						ignoredDirectories = {'.git', 'node_modules', 'vendor', '.next'}
+						ignoredDirectories = {'.git', 'node_modules', 'vendor', '.next', 'dist', 'nuxt-dist'}
 					}
 				}
 			},
 			sourceOptions = {
 				_ = {
-					matchers = {'matcher_substring'},
+					matchers = {'matcher_fzf'},
+					sorters = {'sorter_fzf'},
 				},
 			},
 			filterParams = {
