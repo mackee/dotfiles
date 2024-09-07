@@ -136,6 +136,19 @@ local plugins = {
 	require("ddu_config"),
 	require("textmanip_config"),
 	{ "mattn/vim-goaddtags" },
+	{
+    'Vonr/align.nvim',
+    branch = "v2",
+    lazy = true,
+    init = function()
+			vim.keymap.set(
+				'x',
+				'aa',
+				function() require'align'.align_to_char({ length = 1 }) end,
+				{ noremap = true, silent = true }
+			)
+		end
+	},
 }
 local opts = {
   root = "~/.config/nvim/lazy",
