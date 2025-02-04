@@ -7,14 +7,14 @@ return {
     'uga-rosa/ddc-nvim-lsp-setup',
     'neovim/nvim-lspconfig',
     'Shougo/ddc-filter-matcher_head',
-		'Shougo/ddc-filter-matcher_prefix',
+    'Shougo/ddc-filter-matcher_prefix',
     'Shougo/ddc-filter-sorter_rank',
     'Shougo/ddc-filter-converter_remove_overlap',
     'Shougo/ddc-filter-converter_truncate_abbr',
     'matsui54/denops-signature_help',
     'matsui54/denops-popup-preview.vim',
     'github/copilot.vim',
-		{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
+    { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
     -- 'Shougo/ddc-source-copilot',
   },
   config = function()
@@ -25,17 +25,17 @@ return {
       _ = {
         matchers = {'matcher_head', 'matcher_prefix'},
         sorters = {'sorter_rank'},
-				converters = { "converter_truncate_abbr", "converter_remove_overlap" },
+        converters = { "converter_truncate_abbr", "converter_remove_overlap" },
       },
       lsp = {
         mark = 'LSP', 
         matchers = {'matcher_prefix'},
-				dup = 'keep',
+        dup = 'keep',
         --keywordPattern = '\\+k',
-				--keywordPattern = '[a-zA-Z0-9_À-ÿ$#\\-*]*',
-				sorters = {'sorter_lsp-kind', 'sorter_rank'},
+        --keywordPattern = '[a-zA-Z0-9_À-ÿ$#\\-*]*',
+        sorters = {'sorter_lsp-kind', 'sorter_rank'},
         -- forceCompletionPattern = '\\.|:|->|"\\w+/*',
-				timeout = 500,
+        timeout = 500,
       },
       -- ['copilot'] = {
       --  mark = 'copilot',
@@ -43,24 +43,24 @@ return {
       --  minAutoCompleteLength = 0,
       -- },
     })
-		vim.fn['ddc#custom#patch_global']('sourceParams', {
-			['lsp'] = {
-					snippetEngine = vim.fn["denops#callback#register"](function(body)
-						require("luasnip").lsp_expand(body)
-					end),
-					enableResoveItem = true,
-					enableAdditionalTextEdit = true,
-					confirmBehavior = 'replace',
-					timeout = 500,
-				},
-		})
+    vim.fn['ddc#custom#patch_global']('sourceParams', {
+      ['lsp'] = {
+          snippetEngine = vim.fn["denops#callback#register"](function(body)
+            require("luasnip").lsp_expand(body)
+          end),
+          enableResoveItem = true,
+          enableAdditionalTextEdit = true,
+          confirmBehavior = 'replace',
+          timeout = 500,
+        },
+    })
     vim.g.copilot_no_maps = true
-		vim.g.copilot_node_command = vim.fn.expand('$HOME/.asdf/shims/node')
+    vim.g.copilot_node_command = vim.fn.expand('$HOME/.asdf/shims/node')
     
     require("ddc_source_lsp_setup").setup()
     lspconfig = require("lspconfig")
     lspconfig.denols.setup({
-      root_dir = lspconfig.util.root_pattern("deno.json"),
+      root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
       init_options = {
         lint = true,
         unstable = true,
@@ -77,6 +77,7 @@ return {
     })
     lspconfig.tsserver.setup({
       root_dir = lspconfig.util.root_pattern("package.json"),
+      single_file_support = false,
     })
     
     lspconfig.gopls.setup({
@@ -98,7 +99,7 @@ return {
       settings = {
         perlnavigator = {
           perlPath = vim.fn.expand("$HOME/.plenv/shims/perl"),
-					includePaths = {vim.fn.expand("./local/lib/perl5")},
+          includePaths = {vim.fn.expand("./local/lib/perl5")},
         },
       },
     })
@@ -111,25 +112,26 @@ return {
     --    }
     --  }
     --}
-		--require'lspconfig'.tailwindcss.setup{
+    --require'lspconfig'.tailwindcss.setup{
     --  root_dir = lspconfig.util.root_pattern("tailwind.config.js"),
-		--}
-		require'lspconfig'.biome.setup{
-      root_dir = lspconfig.util.root_pattern("biome.json"),
-		}
-		require "lspconfig".eslint.setup({
+    --}
+    require'lspconfig'.biome.setup{
+      root_dir = lspconfig.util.root_pattern("biome.json", "Biomefile"),
+    }
+    require "lspconfig".eslint.setup({
       root_dir = lspconfig.util.root_pattern("eslint.config.js", ".eslintrc"),
-			on_attach = function(client, bufnr)
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					buffer = bufnr,
-					command = "EslintFixAll",
-				})
-			end,
-		})
-		require'lspconfig'.pyright.setup{
+      on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          buffer = bufnr,
+          command = "EslintFixAll",
+        })
+      end,
+    })
+    require'lspconfig'.pyright.setup{
       root_dir = lspconfig.util.root_pattern("pyproject.toml"),
-			cmd = { "rye", "run", "pyright-langserver", "--stdio" },
-		}
+      cmd = { "rye", "run", "pyright-langserver", "--stdio" },
+    }
+    require"lspconfig".terraformls.setup{}
 
     vim.fn['ddc#enable']()
     vim.fn['popup_preview#enable']()
