@@ -3,7 +3,7 @@ local scheme = wezterm.get_builtin_color_schemes()["SynthwaveAlpha (Gogh)"]
 local act = wezterm.action
 
 return {
-  font = wezterm.font("Moralerspace Neon NF"),
+  font = wezterm.font("Moralerspace Neon"),
   use_ime = true,
   font_size = 11.0,
   cell_width = 1.1,
