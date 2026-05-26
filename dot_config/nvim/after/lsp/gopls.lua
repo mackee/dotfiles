@@ -9,4 +9,5 @@ return {
       gofumpt = true,
     },
   },
+  on_save_actions = { 'source.organizeImports', 'format' },
 }

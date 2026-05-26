@@ -1,6 +1,14 @@
 ---@type vim.lsp.Config
 return {
-  root_dir = require("lspconfig").util.root_pattern("deno.json", "deno.jsonc"),
+  root_dir = function(bufnr, on_dir)
+    local marker = vim.fs.find({ 'deno.json', 'deno.jsonc' }, {
+      path = vim.api.nvim_buf_get_name(bufnr),
+      upward = true,
+      type = 'file',
+    })[1]
+    if not marker then return end
+    on_dir(vim.fs.dirname(marker))
+  end,
   init_options = {
     lint = true,
     unstable = true,

@@ -37,7 +37,23 @@ local plugins = {
     end,
   },
   require("lualine_config"),
-  require("ddc_config"),
+  { "neovim/nvim-lspconfig" },
+  {
+    "github/copilot.vim",
+    init = function()
+      vim.g.copilot_no_maps = true
+    end,
+    config = function()
+      vim.keymap.set('i', '<C-l>', 'copilot#Accept("")', {
+        expr = true, replace_keycodes = false, silent = true,
+      })
+      vim.keymap.set('i', '<C-j>', '<Plug>(copilot-accept-word)')
+      vim.keymap.set('i', '<C-k>', '<Plug>(copilot-accept-line)')
+      vim.keymap.set('i', '<C-]>', '<Plug>(copilot-dismiss)')
+      vim.keymap.set('i', '<M-]>', '<Plug>(copilot-next)')
+      vim.keymap.set('i', '<M-[>', '<Plug>(copilot-previous)')
+    end,
+  },
   -- {
   --  "zbirenbaum/copilot.lua",
   --  event = { "InsertEnter" },
@@ -59,31 +75,31 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      "RRethy/nvim-treesitter-textsubjects",
-    },
-    build = function()
-      vim.cmd("TSUpdate")
-    end,
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate",
     config = function()
-      require('nvim-treesitter.configs').setup {
-        highlight = {
-          enable = true,
-          use_languagetree = true,
-        },
-        indent = {
-          enable = true,
-        },
-        textsubjects = {
-          enable = true,
-          prev_selection = ',',
-          keymaps = {
-            ['.'] = 'textsubjects-smart',
-            [';'] = 'textsubjects-container-outer',
-            ['i;'] = { 'textsubjects-container-inner', desc = "Select inside containers (classes, functions, etc.)" },
-          },
-        },
+      require('nvim-treesitter').setup({})
+
+      local ensure_installed = {
+        'bash', 'css', 'go', 'gomod', 'gosum', 'gotmpl',
+        'graphql', 'hcl', 'html', 'javascript', 'json', 'jsonc',
+        'jsonnet', 'lua', 'markdown', 'markdown_inline', 'perl',
+        'php', 'python', 'query', 'ruby', 'slim', 'sql',
+        'terraform', 'toml', 'tsx', 'typescript', 'vhs', 'vim',
+        'vimdoc', 'yaml',
       }
+      require('nvim-treesitter').install(ensure_installed)
+
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function(args)
+          local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+          if not lang then return end
+          if pcall(vim.treesitter.start, args.buf, lang) then
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
     end,
   },
   {
