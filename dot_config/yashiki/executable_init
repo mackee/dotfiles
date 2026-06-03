@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# Add Homebrew to exec path (if needed for custom layout engines)
+yashiki add-exec-path /opt/homebrew/bin
+
+# Layout configuration
+yashiki layout-set-default tatami
+yashiki set-outer-gap 0  # Gap between windows and screen edges (global)
+yashiki layout-cmd --layout tatami set-inner-gap 0  # Gap between windows (layout-specific)
+
+# Cursor warp (mouse follows focus)
+yashiki set-cursor-warp on-focus-change
+yashiki set-auto-raise enabled 
+
+# Tag bindings (tag N = bitmask $((1<<(N-1))))
+for i in 1 2 3 4 5 6 7 8 9; do
+  yashiki bind "alt-$i" tag-view "$((1<<(i-1)))"
+  yashiki bind "alt-shift-$i" window-move-to-tag "$((1<<(i-1)))"
+  yashiki bind "alt-ctrl-$i" tag-view "$((1 | 1<<$i))"
+  yashiki bind "alt-esc-$i" tag-view "$((2 | 1<<$i+1))"
+done
+
+# Window focus
+yashiki bind alt-j window-focus next
+yashiki bind alt-k window-focus prev
+yashiki bind alt-h layout-cmd dec-main-ratio
+yashiki bind alt-l layout-cmd inc-main-ratio
+
+# Multi-monitor
+yashiki bind alt-o output-focus next
+yashiki bind alt-shift-o output-send next
+
+yashiki exec --track "ranma-server start --init $HOME/.config/ranma/init"
+
+yashiki rule-add --app-name Slack output 2
+yashiki rule-add --app-name Slack tags 2
+yashiki rule-add --app-name WezTerm tags 2
+yashiki rule-add --app-name WezTerm output 3
+yashiki rule-add --app-id "com.apple.ActivityMonitor" tags 4
+yashiki rule-add --app-id "com.apple.ActivityMonitor" output 1
+yashiki rule-add --app-name Obsidian tags 3
+yashiki rule-add --app-name Obsidian output 1
+
+yashiki rule-add --app-id com.google.Chrome --subrole AXUnknown ignore
