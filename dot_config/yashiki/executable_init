@@ -42,3 +42,4 @@ yashiki rule-add --app-name Obsidian tags 3
 yashiki rule-add --app-name Obsidian output 1
 
 yashiki rule-add --app-id com.google.Chrome --subrole AXUnknown ignore
+yashiki rule-add --app-id com.google.Chrome --subrole none --ax-id none ignore
