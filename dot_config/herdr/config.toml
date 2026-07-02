@@ -1,0 +1,25 @@
+# herdr configuration
+# キーバインドは wezterm (~/.config/wezterm/wezterm.lua) のペイン操作に合わせる
+
+[keys]
+# プレフィックスは tmux 互換の ctrl+b (herdr のデフォルトと同じ)
+prefix = "ctrl+b"
+
+# 分割方向を wezterm に合わせる
+# wezterm: leader+v = 下に分割 / leader+H = 右に分割
+# herdr の命名は逆で split_horizontal が下分割、split_vertical が右分割
+split_horizontal = "prefix+v"
+split_vertical = "prefix+shift+h"
+
+# ペインのフォーカス移動 (wezterm と同じ hjkl)
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# タブ操作 (wezterm と同じ: c で新規タブ、1-9 で切替)
+new_tab = "prefix+c"
+switch_tab = "prefix+1..9"
+
+# リサイズモード (wezterm の leader+ctrl+hjkl 相当。モード内で hjkl でリサイズ)
+resize_mode = "prefix+r"
